@@ -16,12 +16,15 @@
     "@emotion/cache": "11.10.8",
     "@emotion/react": "11.10.8",
     "@emotion/styled": "11.10.8",
+    "@iconify/icons-mdi": "^1.0.152",
     "@iconify/react": "^4.1.0",
+    "@material-ui/core": "^4.12.4",
     "@mui/icons-material": "5.11.16",
     "@mui/material": "5.12.3",
     "chart.js": "4.3.0",
     "chroma-js": "2.4.2",
     "file-saver": "^2.0.5",
+    "google-map-react": "^2.1.9",
     "prop-types": "15.8.1",
     "react": "18.2.0",
     "react-chartjs-2": "5.2.0",
@@ -32,10 +35,8 @@
     "react-table": "7.8.0",
     "stylis": "4.1.4",
     "stylis-plugin-rtl": "2.1.1",
-    "yup": "1.1.1",
-    "@iconify/icons-mdi": "^1.0.152",
-    "google-map-react": "^2.1.9",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "yup": "1.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
