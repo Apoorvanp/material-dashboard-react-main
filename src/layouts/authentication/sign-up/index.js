@@ -15,7 +15,8 @@ Coded by www.creative-tim.com
 
 // react-router-dom components
 import { Link } from "react-router-dom";
-
+import React, { useState } from 'react';
+import { Select, MenuItem, Typography } from '@material-ui/core';
 // @mui material components
 import Card from "@mui/material/Card";
 import Checkbox from "@mui/material/Checkbox";
@@ -30,7 +31,100 @@ import MDButton from "components/MDButton";
 import CoverLayout from "layouts/authentication/components/CoverLayout";
 
 // Images
-import bgImage from "assets/images/bg-sign-up-cover.jpeg";
+import bgImage from "assets/images/forest-fire.jpeg";
+import { useEffect } from "react";
+
+const LocationComponent = () => {
+  const [userLocation, setUserLocation] = useState(null);
+
+  useEffect(() => {
+    const getLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            setUserLocation({
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
+            });
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      } else {
+        console.log("Geolocation is not supported by this browser.");
+      }
+    };
+
+    getLocation();
+  }, []);
+
+  return (
+    <div>
+      {userLocation ? (
+        <div>
+
+<br/><br/>
+          Your location:
+          <br/><br/>
+          Latitude: {userLocation.latitude}<br/>
+          Longitude: {userLocation.longitude}
+        </div>
+      ) : (
+        <button onClick={() => getLocation()}>Get Location</button>
+      )}
+    </div>
+  );
+};
+
+
+const DropdownMenu1 = () => {
+  const [selectedOption, setSelectedOption] = useState('');
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
+  return (
+    <Select value={selectedOption} onChange={handleOptionChange}>
+      <MenuItem value="option1">Smoke</MenuItem>
+      <MenuItem value="option2">Open Fire</MenuItem>
+      <MenuItem value="option3">Dangerous Activities that may cause forest fire</MenuItem>
+    </Select>
+  );
+};
+
+const DropdownMenu2 = () => {
+  const [selectedOption, setSelectedOption] = useState('');
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
+  return (
+    <Select value={selectedOption} onChange={handleOptionChange}>
+      <MenuItem value="option1">Less than 5 kms from me</MenuItem>
+      <MenuItem value="option2">Between 5 and 15 kms</MenuItem>
+      <MenuItem value="option3">Farther away</MenuItem>
+    </Select>
+  );
+};
+
+const DropdownMenu3 = () => {
+  const [selectedOption, setSelectedOption] = useState('');
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
+  return (
+    <Select value={selectedOption} onChange={handleOptionChange}>
+      <MenuItem value="option1">Less than 5 kms from me</MenuItem>
+      <MenuItem value="option2">Between 5 and 15 kms</MenuItem>
+      <MenuItem value="option3">Farther away</MenuItem>
+    </Select>
+  );
+};
 
 function Cover() {
   return (
@@ -48,10 +142,10 @@ function Cover() {
           textAlign="center"
         >
           <MDTypography variant="h4" fontWeight="medium" color="white" mt={1}>
-            Join us today
+            Report forest fire danger near you
           </MDTypography>
           <MDTypography display="block" variant="button" color="white" my={1}>
-            Enter your email and password to register
+            Enter the details below
           </MDTypography>
         </MDBox>
         <MDBox pt={4} pb={3} px={3}>
@@ -60,10 +154,30 @@ function Cover() {
               <MDInput type="text" label="Name" variant="standard" fullWidth />
             </MDBox>
             <MDBox mb={2}>
-              <MDInput type="email" label="Email" variant="standard" fullWidth />
+              <MDInput type="phone" label="Phone Number" variant="standard" fullWidth />
             </MDBox>
             <MDBox mb={2}>
-              <MDInput type="password" label="Password" variant="standard" fullWidth />
+              <MDBox display="flex" alignItems="center" ml={0}>
+              <Typography variant="body1" component="div" style={{ fontSize: '15px' }}>
+                What do you see? 
+                </Typography>
+                </MDBox>
+                <MDBox alignItems="center" ml={0} mb ={2} variant="standard" fullWidth>
+              <DropdownMenu1 width="100%" />
+              </MDBox>
+              <MDBox mt={4} mb={1}>
+              <MDBox display="flex" alignItems="center" ml={0}>
+              <Typography variant="body1" component="div" style={{ fontSize: '15px' }}>
+                How far is the danger? 
+                </Typography>
+                </MDBox>
+                <MDBox display="flex" alignItems="center" ml={0}>
+              <DropdownMenu2/>
+              </MDBox>
+              </MDBox>
+              <Typography variant="body1" component="div" style={{ fontSize: '15px' }}>
+              <LocationComponent/>
+              </Typography>
             </MDBox>
             <MDBox display="flex" alignItems="center" ml={-1}>
               <Checkbox />
@@ -73,38 +187,15 @@ function Cover() {
                 color="text"
                 sx={{ cursor: "pointer", userSelect: "none", ml: -1 }}
               >
-                &nbsp;&nbsp;I agree the&nbsp;
-              </MDTypography>
-              <MDTypography
-                component="a"
-                href="#"
-                variant="button"
-                fontWeight="bold"
-                color="info"
-                textGradient
-              >
-                Terms and Conditions
+                &nbsp;&nbsp;I agree that I have provided the right information
               </MDTypography>
             </MDBox>
             <MDBox mt={4} mb={1}>
               <MDButton variant="gradient" color="info" fullWidth>
-                sign in
+               Submit
               </MDButton>
             </MDBox>
             <MDBox mt={3} mb={1} textAlign="center">
-              <MDTypography variant="button" color="text">
-                Already have an account?{" "}
-                <MDTypography
-                  component={Link}
-                  to="/authentication/sign-in"
-                  variant="button"
-                  color="info"
-                  fontWeight="medium"
-                  textGradient
-                >
-                  Sign In
-                </MDTypography>
-              </MDTypography>
             </MDBox>
           </MDBox>
         </MDBox>

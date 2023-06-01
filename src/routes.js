@@ -68,6 +68,14 @@ const routes = [
   },
   {
     type: "collapse",
+    name: "Report Emergency",
+    key: "report",
+    icon: <Icon fontSize="small">feedback</Icon>,
+    route: "/report",
+    component: <SignUp />,
+  },
+  {
+    type: "collapse",
     name: "Tables",
     key: "tables",
     icon: <Icon fontSize="small">table_view</Icon>,
@@ -81,14 +89,6 @@ const routes = [
     icon: <Icon fontSize="small">receipt_long</Icon>,
     route: "/billing",
     component: <Billing />,
-  },
-  {
-    type: "collapse",
-    name: "RTL",
-    key: "rtl",
-    icon: <Icon fontSize="small">format_textdirection_r_to_l</Icon>,
-    route: "/rtl",
-    component: <RTL />,
   },
   {
     type: "collapse",

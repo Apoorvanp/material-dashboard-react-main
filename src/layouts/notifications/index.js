@@ -31,7 +31,9 @@ import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
 import pdfFile from "assets/images/flyer_waldbrand.pdf";
+import pdfEnglish from "assets/images/fire-safety-english.pdf";
 import {saveAs} from "file-saver";
+import bgImage from "assets/images/forest-fire.jpeg";
 
 function PDFDownloadButton1() {
   const handleDownload = () => {
@@ -40,19 +42,20 @@ function PDFDownloadButton1() {
 
   return (
     <MDButton variant="contained" onClick={handleDownload}>
-      Download PDF
+       Sicherheitsinformationen herunterladen
     </MDButton>
   );
 }
 
 function PDFDownloadButton2() {
   const handleDownload = () => {
-    saveAs(pdfFile, 'flyer_waldbrand.pdf');
+    saveAs(pdfEnglish, 'fire-safety-english.pdf');
   };
 
   return (
+    
     <MDButton variant="contained" onClick={handleDownload}>
-      Sicherheitsinformationen herunterladen
+     Download Safety Instructions
     </MDButton>
   );
 }
@@ -96,17 +99,6 @@ function Notifications() {
     />
   );
 
-  const renderInfoSB = (
-    <MDSnackbar
-      icon="notifications"
-      title="Material Dashboard"
-      content="Hello, world! This is a notification message"
-      dateTime="11 mins ago"
-      open={infoSB}
-      onClose={closeInfoSB}
-      close={closeInfoSB}
-    />
-  );
 
   const renderWarningSB = (
     <MDSnackbar
@@ -137,17 +129,12 @@ function Notifications() {
   );
 
   return (
-    <DashboardLayout>
+    <DashboardLayout image={bgImage} >
+      
+      
       <DashboardNavbar />
       <MDBox mt={6} mb={3}>
         <Grid container spacing={3} justifyContent="center">
-          {/* <Grid item xs={12} lg={8}>
-            <Card>
-              <MDBox p={2}>
-                <MDTypography variant="h5">Alerts</MDTypography>
-              </MDBox>
-            </Card>
-          </Grid> */}
 
           <Grid item xs={12} lg={8}>
             <MDBox p={2} lineHeight={0}>
@@ -183,7 +170,7 @@ function Notifications() {
           </Grid>
         </Grid>
       </MDBox>
-      <Grid container spacing={3} justifyContent="center">
+      <Grid container spacing={1} justifyContent="center">
         <PDFDownloadButton1/>
         <PDFDownloadButton2/>
         </Grid>
