@@ -44,6 +44,7 @@ import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
+import MapView from "layouts/map"
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -60,11 +61,20 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Dashboard",
-    key: "dashboard",
+    name: "map",
+    key: "map",
     icon: <Icon fontSize="small">dashboard</Icon>,
-    route: "/dashboard",
-    component: <Dashboard />,
+    route: "/map",
+    component: < MapView/>,
+    //Dashboard
+  },
+  {
+    type: "collapse",
+    name: "Report Emergency",
+    key: "report",
+    icon: <Icon fontSize="small">feedback</Icon>,
+    route: "/report",
+    component: <SignUp />,
   },
   {
     type: "collapse",
@@ -81,14 +91,6 @@ const routes = [
     icon: <Icon fontSize="small">receipt_long</Icon>,
     route: "/billing",
     component: <Billing />,
-  },
-  {
-    type: "collapse",
-    name: "RTL",
-    key: "rtl",
-    icon: <Icon fontSize="small">format_textdirection_r_to_l</Icon>,
-    route: "/rtl",
-    component: <RTL />,
   },
   {
     type: "collapse",
