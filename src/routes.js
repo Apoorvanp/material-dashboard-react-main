@@ -61,7 +61,7 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "map",
+    name: "Map",
     key: "map",
     icon: <Icon fontSize="small">dashboard</Icon>,
     route: "/map",
@@ -83,14 +83,6 @@ const routes = [
     icon: <Icon fontSize="small">table_view</Icon>,
     route: "/tables",
     component: <Tables />,
-  },
-  {
-    type: "collapse",
-    name: "Billing",
-    key: "billing",
-    icon: <Icon fontSize="small">receipt_long</Icon>,
-    route: "/billing",
-    component: <Billing />,
   },
   {
     type: "collapse",
